@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>NullByteCat - Кибербезопасность</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+ <style>
+ :root {
+ --background-color: #0d1117; --container-color: #121420; --border-color: #30363d;
+ --text-color: #c9d1d9; --accent-color: #39d353; --accent-hover: #5ee978;
+ }
+ body { background-color: var(--background-color); color: var(--text-color); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+ .container { max-width: 800px; margin: 0 auto; background-color: var(--container-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; }
+
+ /* --- ОБНОВЛЕННЫЕ СТИЛИ ШАПКИ --- */
+ header {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-bottom: 1px solid var(--border-color);
+ padding-bottom: 20px;
+ margin-bottom: 30px;
+ }
+ .site-branding {
+ display: flex;
+ align-items: center;
+ gap: 20px; /* Расстояние между лого и текстом */
+ width: 100%;
+ margin-bottom: 20px;
+ }
+ .site-logo {
+ height: 60px;
+ width: auto;
+ }
+ .site-title {
+ text-align: left;
+ }
+ header h1 { color: var(--accent-color); font-size: 2.2em; margin: 0; text-shadow: 0 0 8px rgba(57, 211, 83, 0.4); }
+  header p { font-size: 1.1em; color: #8b949e; margin: 0; }
+ /* --- КОНЕЦ ОБНОВЛЕННЫХ СТИЛЕЙ --- */
+
+ .main-nav { width: 100%; }
+ .main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
+ .main-nav a { color: var(--text-color); text-decoration: none; font-size: 1.1em; padding: 5px 10px; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
+ .main-nav a:hover { background-color: var(--accent-color); color: var(--background-color); }
+ .main-nav a.active { color: var(--accent-color); pointer-events: none; }
+
+ .articles-section h2 { color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+ .article-card { background-color: var(--background-color); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px; margin-bottom: 20px; transition: border-color 0.3s, transform 0.3s; }
+ .article-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+ .article-card h3 { margin-top: 0; color: #58a6ff; }
+ .article-card p { margin-bottom: 15px; }
+ .read-more-btn { display: inline-block; padding: 8px 15px; background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s; }
+ .read-more-btn:hover { background-color: var(--accent-color); color: var(--background-color); }
+ footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: #8b949e; }
+ </style>
+</head>
+<body>
+
+ <div class="container">
+ <!-- === ОБНОВЛЕННАЯ ШАПКА === -->
+ <header>
+ <div class="site-branding">
+ <img src="logo.png" alt="Логотип NullByteCat" class="site-logo">
+ <div class="site-title">
+  <h1>NullByteCat</h1>
+  <p>Разбираем кибербезопасность по битам</p>
+ </div>
+ </div>
+ <nav class="main-nav">
+ <ul>
+  <li><a href="nullbytecat.html" class="active">Статьи</a></li>
+  <li><a href="#">Проект: КотоКосмос</a></li>
+  <li><a href="#">Проект: Сканер</a></li>
+  <li><a href="#">Обо мне</a></li>
+ </ul>
+ </nav>
+ </header>
+ <!-- === КОНЕЦ ОБНОВЛЕНИЙ === -->
+
+ <main class="articles-section">
+ <h2>Свежие статьи</h2>
+ <div class="article-card"><h3>Что такое SQL-инъекция? Объясняем на котиках</h3><p>...</p><a href="sql_injection.html" class="read-more-btn">Читать далее</a></div>
+ <div class="article-card"><h3>Как работает фишинг и как не попасться на крючок</h3><p>...</p><a href="phishing.html" class="read-more-btn">Читать далее</a></div>
+ <div class="article-card"><h3>Пять базовых инструментов Kali Linux, которые нужно знать</h3><p>...</p><a href="kali_tools.html" class="read-more-btn">Читать далее</a></div>
+ </main>
+
+ <footer>
+ &copy; 2025 NullByteCat. Информация предоставлена в образовательных целях.
+ </footer>
+ </div>
+
+</body>
+</html>

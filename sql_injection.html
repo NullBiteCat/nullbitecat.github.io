@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Статья: SQL-инъекция на котиках</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+ <style>
+ :root {
+ --background-color: #0d1117; --container-color:#121420; --border-color: #30363d;
+ --text-color: #c9d1d9; --accent-color: #39d353; --accent-hover: #5ee978;
+ }
+ body { background-color: var(--background-color); color: var(--text-color); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+ .container { max-width: 800px; margin: 0 auto; background-color: var(--container-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; }
+ header { display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
+ .site-branding { display: flex; align-items: center; gap: 20px; width: 100%; margin-bottom: 20px; }
+ .site-logo { height: 60px; width: auto; }
+ .site-title { text-align: left; }
+ header h1 { color: var(--accent-color); font-size: 2.2em; margin: 0; text-shadow: 0 0 8px rgba(57, 211, 83, 0.4); }
+ header p { font-size: 1.1em; color: #8b949e; margin: 0; }
+ .main-nav { width: 100%; }
+ .main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
+ .main-nav a { color: var(--text-color); text-decoration: none; font-size: 1.1em; padding: 5px 10px; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
+ .main-nav a:hover { background-color: var(--accent-color); color: var(--background-color); }
+ .main-nav a.active { color: var(--accent-color); pointer-events: none; }
+ /* Стили для контента статьи */
+ .article-content h1 { color: var(--accent-color); }
+ .article-content h3 { color: #58a6ff; }
+ .article-content p { line-height: 1.6; }
+ .article-content code { background-color: #2c2c2c; padding: 2px 5px; border-radius: 4px; color: #ffab70; }
+ footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: #8b949e; }
+ </style>
+</head>
+<body>
+
+ <div class="container">
+ <header>
+  <div class="site-branding">
+  <img src="logo.png" alt="Логотип NullByteCat" class="site-logo">
+  <div class="site-title">
+   <h1>NullByteCat</h1>
+   <p>Разбираем кибербезопасность по битам</p>
+  </div>
+  </div>
+  <nav class="main-nav">
+  <ul>
+   <li><a href="nullbytecat.html">Статьи</a></li>
+   <li><a href="#">Проект: КотоКосмос</a></li>
+   <li><a href="#">Проект: Сканер</a></li>
+   <li><a href="#">Обо мне</a></li>
+  </ul>
+  </nav>
+ </header>
+
+ <main class="article-content">
+  <h1>Что такое SQL-инъекция? Объясняем на котиках</h1>
+  <p>Привет! Давай разберемся с одной из самых известных уязвимостей — SQL-инъекцией. И помогут нам в этом коты.</p>
+  <h3>Аналогия</h3>
+  <p>Представь, что у тебя есть очень послушный кот-робот. Ты даешь ему команды, и он их выполняет. Например, ты говоришь ему: "Принеси мне: <strong>игрушечную мышь</strong>". Кот идет и приносит мышь.</p>
+  <p>А теперь представь, что рядом стоит злоумышленник. Он видит, как ты даешь команды, и решает вмешаться. Когда ты отвлекся, он добавляет к твоей команде свою часть. И теперь команда звучит так: "Принеси мне: <strong>игрушечную мышь' ИЛИ '1'='1</strong>".</p>
+  <p>Для кота-робота, который понимает команды буквально, часть "ИЛИ '1'='1'" — это условие, которое всегда истинно. В итоге он приносит тебе не только мышь, но и вообще все предметы, которые у него есть, потому что команда, по сути, превратилась в "Принеси всё".</p>
+  <h3>Как это работает в реальности?</h3>
+  <p>Сайты хранят данные (имена пользователей, пароли) в базах данных (БД). Чтобы получить данные, программа отправляет в БД запрос на языке SQL. Например, чтобы найти пользователя по имени, запрос может выглядеть так:</p>
+  <code>SELECT * FROM users WHERE username = 'Mursik';</code>
+  <p>Здесь 'Mursik' — это то, что ввел пользователь. А теперь представим, что вместо 'Mursik' злоумышленник вводит в поле логина вот это:</p>
+  <code>' OR '1'='1' --</code>
+  <p>Тогда запрос к базе данных превращается в:</p>
+  <code>SELECT * FROM users WHERE username = '' OR '1'='1' --';</code>
+  <p>Часть <code>'1'='1'</code> всегда верна, а <code>--</code> комментирует остаток строки. В результате база данных отдает программе данные <strong>всех</strong> пользователей, потому что условие стало истинным для каждой записи. Так злоумышленник может получить доступ к чужим аккаунтам.</p>
+  <h3>Как защититься?</h3>
+  <p>Главный способ — никогда не доверять данным от пользователя и не вставлять их в запрос "как есть". Используются специальные "подготовленные выражения" (prepared statements), которые четко отделяют саму команду от данных. Это все равно что положить данные от пользователя в специальный контейнер, который не позволяет им превратиться в часть команды для нашего кота-робота.</p>
+ </main>
+
+ <footer>
+  &copy; 2025 NullByteCat. Информация предоставлена в образовательных целях.
+ </footer>
+ </div>
+</body>
+</html>
