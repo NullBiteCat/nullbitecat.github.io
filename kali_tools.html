@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Статья: 5 инструментов Kali Linux</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+ <style>
+ :root {
+ --background-color: #0d1117; --container-color: #121420; --border-color: #30363d;
+ --text-color: #c9d1d9; --accent-color: #39d353; --accent-hover: #5ee978;
+ }
+ body { background-color: var(--background-color); color: var(--text-color); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+ .container { max-width: 800px; margin: 0 auto; background-color: var(--container-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; }
+ header { display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
+ .site-branding { display: flex; align-items: center; gap: 20px; width: 100%; margin-bottom: 20px; }
+ .site-logo { height: 60px; width: auto; }
+ .site-title { text-align: left; }
+ header h1 { color: var(--accent-color); font-size: 2.2em; margin: 0; text-shadow: 0 0 8px rgba(57, 211, 83, 0.4); }
+ header p { font-size: 1.1em; color: #8b949e; margin: 0; }
+ .main-nav { width: 100%; }
+ .main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
+ .main-nav a { color: var(--text-color); text-decoration: none; font-size: 1.1em; padding: 5px 10px; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
+ .main-nav a:hover { background-color: var(--accent-color); color: var(--background-color); }
+ .main-nav a.active { color: var(--accent-color); pointer-events: none; }
+ /* Стили для контента статьи */
+ .article-content h1 { color: var(--accent-color); }
+ .article-content h3 { color: #58a6ff; }
+ .article-content p { line-height: 1.6; }
+ footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: #8b949e; }
+ </style>
+</head>
+<body>
+
+ <div class="container">
+ <header>
+  <div class="site-branding">
+  <img src="logo.png" alt="Логотип NullByteCat" class="site-logo">
+  <div class="site-title">
+   <h1>NullByteCat</h1>
+   <p>Разбираем кибербезопасность по битам</p>
+  </div>
+  </div>
+  <nav class="main-nav">
+  <ul>
+   <li><a href="index.html">Статьи</a></li>
+    <li><a href="#">Проект: КотоКосмос</a></li>
+   <li><a href="#">Проект: Сканер</a></li>
+   <li><a href="#">Обо мне</a></li>
+  </ul>
+  </nav>
+ </header>
+
+ <main class="article-content">
+  <h1>Пять базовых инструментов Kali Linux, которые нужно знать</h1>
+  <p>Kali Linux — это специальный дистрибутив Linux, который содержит сотни инструментов для тестирования на проникновение и анализа безопасности. Это как швейцарский нож для "белого хакера". Вот пять инструментов, с которых стоит начать знакомство.</p>
+  <h3>1. Nmap (Network Mapper)</h3>
+  <p><strong>Что это?</strong> Сканер сетей. Его задача — "прощупать" цель (сайт или сервер) и узнать, какие порты у нее открыты, какая операционная система используется и какие сервисы запущены.
+  <br><strong>Аналогия:</strong> Это как подойти к зданию и проверить, какие двери и окна открыты, а также посмотреть, что написано на табличках у входа.</p>
+  <h3>2. Metasploit Framework</h3>
+  <p><strong>Что это?</strong> Огромная платформа для поиска и эксплуатации уязвимостей. Если Nmap нашел "открытую дверь", Metasploit предоставляет набор "отмычек" (эксплойтов), чтобы попытаться эту дверь открыть.
+  <br><strong>Аналогия:</strong> Это ящик с инструментами, где для каждого типа замка (уязвимости) есть свой ключ или отмычка.</p>
+  <h3>3. Burp Suite</h3>
+  <p><strong>Что это?</strong> Инструмент-посредник (прокси) для анализа веб-трафика. Он встает между вашим браузером и сайтом и позволяет перехватывать, просматривать и изменять все запросы, которые отправляются на сервер. Незаменим для поиска уязвимостей на сайтах.
+  <br><strong>Аналогия:</strong> Это как почтальон, который позволяет вам вскрывать и читать все письма между вами и сайтом, а иногда даже подменять их содержание.</p>
+  <h3>4. Wireshark</h3>
+  <p><strong>Что это?</strong> Анализатор сетевого трафика, или "сниффер". Он "слушает" всё, что происходит в вашей сети, и показывает каждый пакет данных, который проходит через ваш сетевой адаптер.
+  <br><strong>Аналогия:</strong> Это как возможность слышать абсолютно все разговоры в большом кафе, а не только тот, в котором вы участвуете.</p>
+  <h3>5. John the Ripper / Hashcat</h3>
+  <p><strong>Что это?</strong> Инструменты для взлома паролей. Они не угадывают пароль к сайту, а работают с уже украденными хэшами паролей (зашифрованными версиями). Они пытаются подобрать исходный пароль путем перебора по словарю или всеми возможными комбинациями.
+  <br><strong>Аналогия:</strong> У вас есть замок и огромная связка ключей. Вы просто сидите и методично пробуете каждый ключ, пока замок не откроется.</p>
+ </main>
+
+ <footer>
+  &copy; 2025 NullByteCat. Информация предоставлена в образовательных целях.
+ </footer>
+ </div>
+</body>
+
+</html>

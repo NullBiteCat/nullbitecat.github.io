@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Статья: Как работает фишинг</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+ <style>
+ :root {
+ --background-color: #0d1117; --container-color: #121420; --border-color: #30363d;
+ --text-color: #c9d1d9; --accent-color: #39d353; --accent-hover: #5ee978;
+ }
+ body { background-color: var(--background-color); color: var(--text-color); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+ .container { max-width: 800px; margin: 0 auto; background-color: var(--container-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; }
+ header { display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
+ .site-branding { display: flex; align-items: center; gap: 20px; width: 100%; margin-bottom: 20px; }
+ .site-logo { height: 60px; width: auto; }
+ .site-title { text-align: left; }
+ header h1 { color: var(--accent-color); font-size: 2.2em; margin: 0; text-shadow: 0 0 8px rgba(57, 211, 83, 0.4); }
+ header p { font-size: 1.1em; color: #8b949e; margin: 0; }
+ .main-nav { width: 100%; }
+ .main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; }
+ .main-nav a { color: var(--text-color); text-decoration: none; font-size: 1.1em; padding: 5px 10px; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
+ .main-nav a:hover { background-color: var(--accent-color); color: var(--background-color); }
+ .main-nav a.active { color: var(--accent-color); pointer-events: none; }
+ /* Стили для контента статьи */
+ .article-content h1 { color: var(--accent-color); }
+ .article-content p, .article-content li { line-height: 1.6; }
+ .article-content strong { color: #e94560; }
+ footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: #8b949e; }
+ </style>
+</head>
+<body>
+
+ <div class="container">
+ <header>
+  <div class="site-branding">
+  <img src="logo.png" alt="Логотип NullByteCat" class="site-logo">
+  <div class="site-title">
+   <h1>NullByteCat</h1>
+   <p>Разбираем кибербезопасность по битам</p>
+  </div>
+  </div>
+  <nav class="main-nav">
+  <ul>
+   <li><a href="index.html">Статьи</a></li>
+   <li><a href="#">Проект: КотоКосмос</a></li>
+   <li><a href="#">Проект: Сканер</a></li>
+   <li><a href="#">Обо мне</a></li>
+  </ul>
+  </nav>
+ </header>
+
+ <main class="article-content">
+  <h1>Как работает фишинг и как не попасться на крючок</h1>
+  <p>Фишинг (от англ. fishing — "рыбалка") — это вид интернет-мошенничества, цель которого — выудить у вас конфиденциальную информацию: логины, пароли, данные банковских карт.</p>
+  <h3>Схема атаки</h3>
+  <p>Злоумышленник создает практически точную копию известного вам сайта (банка, социальной сети, почты) и присылает вам письмо или сообщение со ссылкой на этот поддельный сайт. Сообщение обычно носит пугающий или, наоборот, очень заманчивый характер.</p>
+  <p>Например: "<strong>Ваш аккаунт будет заблокирован!</strong> Срочно войдите, чтобы подтвердить данные" или "<strong>Вы выиграли приз!</strong> Получите его по ссылке".</p>
+  <p>Вы переходите по ссылке, вводите свои данные на поддельной странице, и они тут же улетают к мошеннику.</p>
+  <h3>Как распознать фишинг: 5 признаков</h3>
+  <ul>
+  <li><strong>Странный адрес отправителя:</strong> Вместо`support@bank.com` вы видите что-то вроде `support@banc.com` или `bank-support@gmail.com`.</li>
+  <li><strong>Ошибки и опечатки:</strong> Солидные компании редко допускают грамматические ошибки в своих рассылках.</li>
+  <li><strong>Срочность и угрозы:</strong> Вас торопят, пугают блокировкой, требуют немедленных действий. Это делается, чтобы вы не успели подумать.</li>
+  <li><strong>Подозрительная ссылка:</strong> Наведите курсор на ссылку (<strong>не нажимая!</strong>) и посмотрите в левый нижний угол браузера. Адрес будет отличаться от ожидаемого. Например, вместо `vk.com` будет `vk.auth-login.com`.</li>
+  <li><strong>Запрос конфиденциальной информации:</strong> Ни один банк или сервис не будет просить вас прислать пароль или CVC-код от карты по электронной почте.</li>
+  </ul>
+  <h3>Что делать, если вы заподозрили фишинг?</h3>
+  <p>Просто удалите письмо. Не переходите по ссылкам и не открывайте вложения. Если вы сомневаетесь, зайдите на нужный сайт вручную, введя его адрес в браузере, и проверьте информацию там.</p>
+ </main>
+
+ <footer>
+  &copy; 2025 NullByteCat. Информация предоставлена в образовательных целях.
+ </footer>
+ </div>
+</body>
+
+</html>
